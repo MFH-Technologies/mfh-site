@@ -1,0 +1,97 @@
+/* MFH Technologies website. Colours and type from the MFH Technologies CI v2.0: a charcoal-led palette, Inter
+   (with the CI's Arial and Helvetica fallback, so the site loads no outside fonts), and the gradient in the mark only. */
+:root {
+  --mfh-charcoal: #1B242E;
+  --mfh-slate: #41505E;
+  --mfh-grey: #8A8F98;
+  --mfh-line: #E3E6EA;
+  --mfh-surface: #F4F5F8;
+  --mfh-white: #FFFFFF;
+  --bg: var(--mfh-white);
+  --panel: var(--mfh-surface);
+  --ink: var(--mfh-charcoal);
+  --body: var(--mfh-slate);
+  --muted: var(--mfh-grey);
+  --line: var(--mfh-line);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--mfh-charcoal);
+    --panel: #232D38;
+    --ink: #FFFFFF;
+    --body: #D5DAE0;
+    --muted: #A9AFB8;
+    --line: #36424E;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+a { color: var(--ink); text-underline-offset: 3px; }
+a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 16px; background: var(--bg); padding: 8px 12px; z-index: 10; }
+
+header.site { border-bottom: 1px solid var(--line); }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 20px; }
+.lockup { display: block; width: 200px; height: auto; }
+.lockup-dark { display: none; }
+@media (prefers-color-scheme: dark) { .lockup-light { display: none; } .lockup-dark { display: block; } }
+nav.main { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 15px; font-weight: 500; }
+nav.main a { text-decoration: none; color: var(--body); }
+nav.main a:hover { color: var(--ink); text-decoration: underline; }
+
+h1, h2, h3 { color: var(--ink); font-weight: 600; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(32px, 5vw, 44px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(24px, 3.2vw, 30px); letter-spacing: -0.01em; }
+h3 { font-size: 20px; }
+p { margin: 0; }
+.lead { font-size: clamp(18px, 2.2vw, 21px); color: var(--body); max-width: 46em; }
+
+section { padding: 72px 0; }
+section.panel { background: var(--panel); }
+.stack > * + * { margin-top: 16px; }
+.stack-lg > * + * { margin-top: 28px; }
+
+.facts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; padding: 0; list-style: none; }
+.facts li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500; color: var(--body); background: var(--bg); }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.card { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+.card .kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.card p { margin-top: 10px; }
+.card .more { margin-top: 16px; font-weight: 500; }
+
+dl.details { display: grid; grid-template-columns: minmax(160px, 240px) 1fr; gap: 0; margin-bottom: 0; border-top: 1px solid var(--line); }
+dl.details dt, dl.details dd { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); }
+dl.details dt { font-weight: 500; color: var(--ink); padding-right: 16px; }
+@media (max-width: 560px) {
+  dl.details { grid-template-columns: 1fr; }
+  dl.details dt { border-bottom: 0; padding-bottom: 0; }
+  dl.details dd { padding-top: 4px; }
+}
+
+.prose { max-width: 46em; }
+.prose h2 { margin-top: 40px; font-size: 22px; }
+.prose p, .prose ul { margin-top: 12px; }
+.prose ul { padding-left: 22px; }
+
+footer.site { border-top: 1px solid var(--line); padding: 32px 0 48px; font-size: 14px; color: var(--muted); }
+footer.site .wrap > * + * { margin-top: 8px; }
+footer.site a { color: var(--muted); }
+footer.site .name { color: var(--ink); font-weight: 500; }
+
+@media (max-width: 640px) {
+  header.site .wrap { flex-direction: column; align-items: flex-start; }
+  section { padding: 52px 0; }
+  .wrap { padding: 0 16px; }
+  .lockup { width: 170px; }
+}
