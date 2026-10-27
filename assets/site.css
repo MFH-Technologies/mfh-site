@@ -1,6 +1,15 @@
-/* MFH Technologies website. Colours and type from the MFH Technologies CI v2.0: a charcoal-led palette, Inter
-   (with the CI's Arial and Helvetica fallback, so the site loads no outside fonts), and the gradient in the mark only.
-   The page is quiet on purpose: large type, hairlines and white space; the contact band and footer sit on charcoal. */
+/* MFH Technologies website. Colours and type from the MFH Technologies CI v2.0: charcoal and white, Inter (served
+   from this site, so the page loads nothing from other companies; Arial and Helvetica as the CI's fallback), and
+   the gradient in the mark only. The page is a poster: the mark, one statement set very large, the two sectors with
+   the product in each, and a charcoal band to get in touch. Headings stay in SemiBold, as the CI asks; the boldness
+   comes from scale, not weight. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format("woff2");
+}
 :root {
   --mfh-charcoal: #1B242E;
   --mfh-slate: #41505E;
@@ -11,104 +20,161 @@
   --bg: var(--mfh-white);
   --ink: var(--mfh-charcoal);
   --body: var(--mfh-slate);
-  --label: var(--mfh-slate);
   --line: var(--mfh-line);
   /* The charcoal band (contact and footer) in both modes */
   --band: var(--mfh-charcoal);
   --band-ink: #FFFFFF;
   --band-body: #C9CFD6;
+  --band-soft: #A9AFB8;
   --band-line: #36424E;
+  --font: Inter, Arial, Helvetica, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --gut: clamp(20px, 4vw, 56px);
+  --step-0: 1.0625rem;
+  --step-1: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
+  --step-2: clamp(1.375rem, 1.1rem + 0.9vw, 1.875rem);
+  --poster: clamp(4rem, 1rem + 9.4vw, 11rem);
+  color-scheme: light;
 }
+/* At night the page turns charcoal; the CI allows only the white artwork on charcoal, so the mark goes white. */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: var(--mfh-charcoal);
     --ink: #FFFFFF;
     --body: #C9CFD6;
-    --label: #A9AFB8;
     --line: #36424E;
-    --band: #151C24;
+    --band: #131A21;
     --band-line: #2C3640;
+    color-scheme: dark;
   }
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--body);
-  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 17px;
+  font-family: var(--font);
+  font-optical-sizing: auto;
+  font-size: var(--step-0);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
+img { display: block; max-width: 100%; height: auto; }
 a { color: var(--ink); text-underline-offset: 4px; text-decoration-thickness: 1px; }
-a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 2px; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
-.skip { position: absolute; left: -9999px; }
-.skip:focus { left: 16px; top: 16px; background: var(--bg); padding: 8px 12px; z-index: 10; }
-h1, h2, h3 { color: var(--ink); font-weight: 500; line-height: 1.1; margin: 0; }
-p { margin: 0; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 2px; }
+::selection { background: var(--ink); color: var(--bg); }
+.wrap { max-width: 1440px; margin: 0 auto; padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); }
+.skip { position: absolute; left: -9999px; top: 12px; background: var(--bg); color: var(--ink); padding: 10px 14px; z-index: 20; }
+.skip:focus { left: 16px; }
+h1, h2, h3 { color: var(--ink); font-weight: 600; margin: 0; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+.label { font-size: 0.9375rem; font-weight: 500; letter-spacing: 0; color: var(--body); }
+.n { font-weight: 500; font-variant-numeric: tabular-nums; }
 
-/* Header: the colour lock-up on white, the white lock-up in dark mode (CI: white lock-up on charcoal only) */
-header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 28px; padding-bottom: 28px; }
-.lockup { display: block; width: 180px; height: auto; }
-.lockup-dark { display: none; }
-@media (prefers-color-scheme: dark) { .lockup-light { display: none; } .lockup-dark { display: block; } }
-nav.main { display: flex; gap: 32px; font-size: 15px; }
-nav.main a { text-decoration: none; color: var(--body); }
-nav.main a:hover { color: var(--ink); }
+/* Header: the wordmark on the home page (the mark is right beside it in the hero, as the CI provides for), the full
+   lock-up on other pages. Colour artwork on white, white artwork on charcoal. */
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 96px; }
+header.site a.home { display: inline-flex; align-items: center; min-height: 44px; }
+.wordmark { width: 104px; height: auto; }
+.lockup { width: 168px; height: auto; }
+nav.main { display: flex; gap: 4px 28px; }
+nav.main a { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.9375rem; font-weight: 500; color: var(--ink); text-decoration: none; }
+nav.main a:hover { text-decoration: underline; text-underline-offset: 6px; }
+.page-home header.site { position: absolute; inset: 0 0 auto; z-index: 3; }
 
-.label { font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--label); }
+/* Hero: the statement, bottom left, and the mark, large, on the right. The mark keeps clear space of about a third
+   of its own width on every side. */
+.hero { --mark-w: min(34vw, 600px, calc(58svh * 1.113)); --h1: clamp(3rem, 0.5rem + 6.2vw, 8rem); min-height: 100svh; display: grid; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) var(--mark-w); column-gap: calc(var(--mark-w) * 0.3); align-items: end; width: 100%; padding-top: 140px; padding-bottom: clamp(40px, 7vh, 88px); }
+.hero-copy { display: grid; gap: clamp(24px, 3vw, 40px); }
+.hero h1 { font-size: var(--h1); line-height: 0.92; letter-spacing: -0.045em; }
+.hero .lead { font-size: var(--step-1); line-height: 1.45; max-width: 28em; }
+.hero-mark { margin: 0; }
+.hero-mark img { width: 100%; }
+/* On wide screens the foot of the mark sits on the statement's last line, and the lead runs on below. */
+@media (min-width: 900px) {
+  .hero .wrap { grid-template-areas: "h mark" "lead ."; align-content: end; row-gap: clamp(24px, 3vw, 40px); }
+  .hero-copy { display: contents; }
+  .hero h1 { grid-area: h; }
+  .hero .lead { grid-area: lead; }
+  /* The artwork has 39 of its 460 units of space under the foot; move it down so the foot meets the baseline. */
+  .hero-mark { grid-area: mark; transform: translateY(calc(var(--mark-w) * 0.0762 - var(--h1) * 0.1)); }
+}
+@media (max-width: 899px) {
+  .hero { --mark-w: min(62vw, 320px); }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; row-gap: calc(var(--mark-w) * 0.3); padding-top: 140px; }
+  .hero-mark { grid-row: 1; width: var(--mark-w); align-self: start; }
+  .hero-copy { align-self: end; }
+}
 
-.hero { padding: clamp(72px, 12vw, 160px) 0 clamp(64px, 10vw, 128px); }
-.hero h1 { font-size: clamp(38px, 6.4vw, 76px); letter-spacing: -0.035em; max-width: 13em; }
-.hero .lead { margin-top: 32px; font-size: clamp(18px, 2vw, 21px); max-width: 30em; }
+/* Work: each sector with the product in it. The product name is the poster; the sector reads beside it. */
+.work { padding: clamp(80px, 11vw, 168px) 0 clamp(64px, 9vw, 136px); }
+.work .label { padding-bottom: 20px; }
+.rows { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 24px clamp(24px, 4vw, 64px); padding: clamp(36px, 5vw, 72px) 0; border-top: 1px solid var(--line); }
+.sector { display: grid; align-content: start; gap: 10px; padding-top: 0.6em; }
+.sector .n { color: var(--body); }
+.sector h3 { font-size: var(--step-2); line-height: 1.15; letter-spacing: -0.02em; }
+.sector p { max-width: 22em; }
+.product { display: grid; align-content: start; gap: 18px; }
+.name { font-size: var(--poster); font-weight: 600; line-height: 0.9; letter-spacing: -0.055em; color: var(--ink); overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.name > span { display: inline-block; }
+.name a { color: inherit; text-decoration: none; display: inline-flex; align-items: flex-start; gap: 0.08em; }
+.name a svg { width: 0.32em; height: 0.32em; margin-top: 0.1em; flex: none; transition: transform 240ms var(--ease); }
+@media (hover: hover) and (pointer: fine) {
+  .name a:hover svg { transform: translate(0.06em, -0.06em); }
+  .name a:hover .t { text-decoration: underline; text-decoration-thickness: 0.04em; text-underline-offset: 0.1em; }
+}
+.name a:focus-visible svg { transform: translate(0.06em, -0.06em); }
+.what { font-size: var(--step-1); color: var(--ink); max-width: 30em; }
+@media (max-width: 899px) {
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .sector { padding-top: 0; }
+}
 
-.sectors { border-top: 1px solid var(--line); }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; }
-.grid-2 > div { padding: 56px 48px 64px 0; }
-.grid-2 > div + div { padding-left: 48px; border-left: 1px solid var(--line); }
-.sectors h2 { margin-top: 20px; font-size: clamp(24px, 2.6vw, 30px); letter-spacing: -0.015em; }
-.sectors h2 + p { margin-top: 12px; max-width: 24em; }
+/* Contact: the charcoal band, with the footer running on below it */
+.contact { background: var(--band); color: var(--band-body); padding: clamp(88px, 12vw, 176px) 0 clamp(64px, 8vw, 112px); }
+.contact h2 { color: var(--band-ink); font-size: var(--poster); line-height: 0.9; letter-spacing: -0.055em; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.contact h2 > span { display: inline-block; }
+.contact .sub { margin-top: clamp(20px, 2.4vw, 32px); font-size: var(--step-1); }
+.lines { margin-top: clamp(40px, 5vw, 64px); display: flex; flex-wrap: wrap; align-items: center; gap: 16px clamp(32px, 5vw, 72px); }
+.lines .item { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.lines a { color: var(--band-ink); font-size: clamp(1.375rem, 1rem + 1.6vw, 2.25rem); font-weight: 500; letter-spacing: -0.02em; text-decoration: none; border-bottom: 1px solid var(--band-line); padding-bottom: 4px; overflow-wrap: anywhere; }
+.lines a:hover { border-bottom-color: var(--band-ink); }
+.copy { min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--band-line); background: transparent; color: var(--band-ink); font: 500 0.9375rem var(--font); cursor: pointer; }
+.copy:hover { border-color: var(--band-ink); }
+.where { margin-top: clamp(28px, 3vw, 40px); font-size: 0.9375rem; color: var(--band-soft); }
 
-#work { border-top: 1px solid var(--line); padding: 72px 0 104px; }
-.work { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid var(--line); }
-.work li { display: grid; grid-template-columns: 4fr 7fr 3fr; gap: 24px; align-items: baseline; padding: 28px 0; border-bottom: 1px solid var(--line); }
-.work .name { font-size: clamp(22px, 2.4vw, 28px); font-weight: 500; letter-spacing: -0.015em; color: var(--ink); text-decoration: none; }
-.work a.name:hover { text-decoration: underline; }
-.work .name span { font-size: 0.7em; color: var(--label); }
-.work .tag { font-size: 14px; color: var(--label); text-align: right; }
-
-.contact { background: var(--band); color: var(--band-body); padding: clamp(72px, 10vw, 128px) 0; }
-.contact h2 { color: var(--band-ink); font-size: clamp(38px, 6vw, 68px); letter-spacing: -0.035em; }
-.contact .sub { margin-top: 20px; font-size: clamp(18px, 2vw, 21px); }
-.contact .lines { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 12px 56px; }
-.contact .lines a { color: var(--band-ink); font-size: clamp(20px, 2.6vw, 28px); letter-spacing: -0.01em; text-decoration: none; border-bottom: 1px solid var(--band-line); padding-bottom: 6px; }
-.contact .lines a:hover { border-bottom-color: var(--band-ink); }
-.contact .where { margin-top: 32px; font-size: 14px; letter-spacing: 0.04em; }
-
-footer.site { background: var(--band); color: var(--mfh-grey); font-size: 13px; line-height: 1.6; padding: 28px 0 40px; }
-footer.site .wrap { border-top: 1px solid var(--band-line); padding-top: 24px; }
-footer.site p + p { margin-top: 6px; }
+footer.site { background: var(--band); color: var(--band-soft); font-size: 0.875rem; line-height: 1.6; padding: 40px 0 48px; }
+footer.site .wrap > div { display: grid; gap: 6px; }
+.page-home footer.site { padding-top: 0; }
+.page-home footer.site .wrap > div { border-top: 1px solid var(--band-line); padding-top: 24px; }
 footer.site a { color: var(--band-body); }
 
 /* The privacy page */
-.prose { max-width: 44em; padding: clamp(48px, 8vw, 96px) 0 96px; }
-.prose h1 { font-size: clamp(34px, 5vw, 52px); letter-spacing: -0.03em; }
-.prose .lead { margin-top: 20px; font-size: 19px; }
-.prose h2 { margin-top: 44px; font-size: 21px; letter-spacing: -0.01em; }
+.prose { max-width: 44em; padding: clamp(40px, 7vw, 96px) 0 clamp(72px, 9vw, 120px); }
+.prose h1 { font-size: clamp(2.75rem, 1.5rem + 5vw, 5.5rem); line-height: 0.95; letter-spacing: -0.045em; }
+.prose .lead { margin-top: 24px; font-size: var(--step-1); line-height: 1.5; }
+.prose h2 { margin-top: 48px; font-size: var(--step-2); line-height: 1.2; letter-spacing: -0.02em; }
 .prose p { margin-top: 12px; }
 
-@media (max-width: 760px) {
-  .wrap { padding: 0 20px; }
-  .lockup { width: 150px; }
-  nav.main { gap: 20px; }
-  .grid-2 { grid-template-columns: 1fr; }
-  .grid-2 > div { padding: 44px 0 48px; }
-  .grid-2 > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
-  .work li { grid-template-columns: 1fr; gap: 6px; padding: 24px 0; }
-  .work .tag { text-align: left; }
-  #work { padding: 56px 0 72px; }
+/* Entrance. The statement rises word by word through a mask and the mark is drawn in from left to right, the way its
+   gradient runs; further down, each product name and the contact line rise once as they come into view. Nothing
+   moves for people who ask for reduced motion, and without JavaScript everything simply shows. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+  .js .hero h1 .w > span { display: inline-block; transform: translateY(105%); transition: transform 900ms var(--ease); transition-delay: calc(var(--i) * 45ms); }
+  .js .in .hero h1 .w > span { transform: none; }
+  .js .hero-mark img { clip-path: inset(0 100% 0 0); transition: clip-path 1300ms var(--ease) 250ms; }
+  .js .in .hero-mark img { clip-path: inset(0 0 0 0); }
+  .js .hero .lead { opacity: 0; transform: translateY(12px); transition: opacity 700ms var(--ease) 450ms, transform 700ms var(--ease) 450ms; }
+  .js .in .hero .lead { opacity: 1; transform: none; }
+  .js .name > span, .js .contact h2 > span { transform: translateY(105%); transition: transform 900ms var(--ease); }
+  .js .seen .name > span, .js .seen h2 > span { transform: none; }
+  .js .row .sector, .js .row .what { opacity: 0; transform: translateY(12px); transition: opacity 700ms var(--ease) 200ms, transform 700ms var(--ease) 200ms; }
+  .js .row.seen .sector, .js .row.seen .what { opacity: 1; transform: none; }
 }
-@media (max-width: 400px) { .wrap { padding: 0 16px; } }

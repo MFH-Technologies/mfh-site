@@ -2,20 +2,26 @@
 <html lang="en-ZA">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy | MFH Technologies</title>
 <meta name="description" content="How the MFH Technologies website handles personal information.">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1B242E" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
 <header class="site">
   <div class="wrap">
-    <a href="index.html" aria-label="MFH Technologies, home">
-      <img class="lockup lockup-light" src="assets/mfh-lockup-colour.svg" alt="MFH Technologies" width="180" height="60">
-      <img class="lockup lockup-dark" src="assets/mfh-lockup-white.svg" alt="MFH Technologies" width="180" height="60">
+    <a class="home" href="index.html" aria-label="MFH Technologies, home">
+      <picture>
+        <source srcset="assets/mfh-lockup-white.svg" media="(prefers-color-scheme: dark)">
+        <img class="lockup" src="assets/mfh-lockup-colour.svg" alt="MFH Technologies" width="168" height="56">
+      </picture>
     </a>
     <nav class="main" aria-label="Main">
       <a href="index.html#work">Work</a>
@@ -54,8 +60,10 @@
 
 <footer class="site">
   <div class="wrap">
-    <p>MFH Technologies (Pty) Ltd &middot; Reg. No. 2026/583234/07 &middot; 17 Chamonix HOA, 874 Odell Street, Wingate Park, Gauteng 0181 &middot; Director: Stephan Pieterse &middot; Information Officer 2026-069384</p>
-    <p><a href="privacy.html">Privacy</a> &middot; <a href="mailto:info@mfhtechnologies.co.za">info@mfhtechnologies.co.za</a> &middot; <a href="tel:+27670157701">+27 67 015 7701</a></p>
+    <div>
+      <p>MFH Technologies (Pty) Ltd &middot; Reg. No. 2026/583234/07 &middot; 17 Chamonix HOA, 874 Odell Street, Wingate Park, Gauteng 0181 &middot; Director: Stephan Pieterse &middot; Information Officer 2026-069384</p>
+      <p><a href="privacy.html">Privacy</a> &middot; <a href="mailto:info@mfhtechnologies.co.za">info@mfhtechnologies.co.za</a> &middot; <a href="tel:+27670157701">+27 67 015 7701</a></p>
+    </div>
   </div>
 </footer>
 </body>
