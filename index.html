@@ -21,27 +21,23 @@
 <body class="page-home">
 <a class="skip" href="#main">Skip to the content</a>
 <header class="site">
-  <div class="wrap">
-    <a class="home" href="index.html" aria-label="MFH Technologies, home">
-      <picture>
-        <source srcset="assets/mfh-wordmark-white.svg" media="(prefers-color-scheme: dark)">
-        <img class="wordmark" src="assets/mfh-wordmark-colour.svg" alt="MFH Technologies" width="104" height="56">
-      </picture>
-    </a>
-    <nav class="main" aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+  <a class="home" href="index.html" aria-label="MFH Technologies, home">
+    <picture>
+      <source srcset="assets/mfh-wordmark-white.svg" media="(prefers-color-scheme: dark)">
+      <img class="wordmark" src="assets/mfh-wordmark-colour.svg" alt="MFH Technologies" width="96" height="52">
+    </picture>
+  </a>
+  <nav class="main" aria-label="Main">
+    <a href="#work" aria-label="Work"><span class="roll"><span data-label="Work">Work</span></span></a>
+    <a class="pill" href="#contact" aria-label="Talk to us"><span class="roll"><span data-label="Talk to us">Talk to us</span></span></a>
+  </nav>
 </header>
 
 <main id="main">
   <section class="hero" aria-labelledby="hero-h">
-    <div class="wrap">
-      <div class="hero-copy">
-        <h1 id="hero-h"><span class="w"><span style="--i:0">Software</span></span> <span class="w"><span style="--i:1">for</span></span> <span class="w"><span style="--i:2">financial</span></span> <span class="w"><span style="--i:3">services</span></span> <span class="w"><span style="--i:4">and</span></span> <span class="w"><span style="--i:5">consumer</span></span> <span class="w"><span style="--i:6">retail.</span></span></h1>
-        <p class="lead">We build and own software platforms, and license them to the businesses that run them.</p>
-      </div>
+    <div class="stage">
+      <div class="corners"><p>MFH Technologies (Pty) Ltd</p><p>Pretoria, South Africa</p></div>
+      <h1 id="hero-h"><span class="w"><span style="--i:0">Software</span></span> <span class="w"><span style="--i:1">for</span></span> <span class="w"><span style="--i:2">financial</span></span> <span class="w"><span style="--i:3">services</span></span> <span class="w"><span style="--i:4">and</span></span> <span class="w"><span style="--i:5">consumer</span></span> <span class="w"><span style="--i:6">retail.</span></span></h1>
       <div class="hero-mark" aria-hidden="true">
         <picture>
           <source srcset="assets/mfh-mark-white.svg" media="(prefers-color-scheme: dark)">
@@ -52,72 +48,87 @@
   </section>
 
   <section class="work" id="work" aria-labelledby="work-h">
-    <div class="wrap">
-      <h2 class="label" id="work-h">Work</h2>
-      <ol class="rows">
-        <li class="row">
-          <div class="sector">
-            <span class="n">01</span>
-            <h3>Financial services</h3>
-            <p>Platforms, engines and data models for regulated financial products.</p>
-          </div>
-          <div class="product">
-            <p class="name"><span>Tiekie</span></p>
-            <p class="what">Financial platform, licensed to Tiekie Financial Services.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="sector">
-            <span class="n">02</span>
-            <h3>Consumer retail</h3>
-            <p>Consumer products for the way South African households shop.</p>
-          </div>
-          <div class="product">
-            <p class="name"><span><a href="https://daladish.co.za"><span class="t">DalaDish</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a></span></p>
-            <p class="what">Meal planning for South African households, in private testing.</p>
-          </div>
-        </li>
-      </ol>
+    <div class="work-head"><h2 id="work-h">Work</h2></div>
+    <div class="tiles">
+      <article class="tile tiekie" aria-labelledby="tiekie-h">
+        <p class="label"><span class="n">(01)</span> Financial services</p>
+        <ul class="arch" aria-label="The Tiekie platform">
+          <li style="--i:0"><span class="n">01</span>Application</li>
+          <li style="--i:1"><span class="n">02</span>Financial engine</li>
+          <li style="--i:2"><span class="n">03</span>Tax engine</li>
+          <li style="--i:3"><span class="n">04</span>Data models</li>
+        </ul>
+        <div class="foot">
+          <h3 class="name" id="tiekie-h"><span>Tiekie</span></h3>
+          <dl class="register">
+            <div><dt>Owner</dt><dd>MFH Technologies</dd></div>
+            <div><dt>Licensed to</dt><dd>Tiekie Financial Services</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="tile daladish" aria-labelledby="daladish-h">
+        <p class="label"><span class="n">(02)</span> Consumer retail</p>
+        <div class="strip" aria-hidden="true">
+          <div class="track"><img src="assets/work/bobotie.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/d_braai.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/pap_wors.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/d_breyani.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/n_curry_rotis.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/dess_malva.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/bobotie.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/d_braai.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/pap_wors.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/d_breyani.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/n_curry_rotis.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/dess_malva.jpg" alt="" width="400" height="300" loading="lazy"></div>
+          <div class="track b"><img src="assets/work/dess_milk_tart.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/d_potjie.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/l_kota.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/n_samoosas.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/v_umngqusho.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/n_sosaties.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/dess_milk_tart.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/d_potjie.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/l_kota.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/n_samoosas.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/v_umngqusho.jpg" alt="" width="400" height="300" loading="lazy"><img src="assets/work/n_sosaties.jpg" alt="" width="400" height="300" loading="lazy"></div>
+        </div>
+        <div class="foot">
+          <h3 class="name" id="daladish-h"><a href="https://daladish.co.za"><picture>
+            <source srcset="assets/work/daladish-logo-dark.svg" media="(prefers-color-scheme: dark)">
+            <img class="dd-logo" src="assets/work/daladish-logo.svg" alt="DalaDish" width="460" height="92">
+          </picture></a></h3>
+          <dl class="register">
+            <div><dt>Product</dt><dd>Meal planning for South African households</dd></div>
+            <div><dt>Owner</dt><dd>MFH Technologies</dd></div>
+            <div><dt>Status</dt><dd>In private testing</dd></div>
+          </dl>
+          <a class="out" href="https://daladish.co.za">daladish.co.za<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></a>
+        </div>
+      </article>
     </div>
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-h">
-    <div class="wrap">
-      <h2 id="contact-h"><span>Talk to us.</span></h2>
-      <p class="sub">For licensing, partnerships and new work.</p>
-      <div class="lines">
-        <div class="item">
-          <a id="email" href="mailto:info@mfhtechnologies.co.za">info@mfhtechnologies.co.za</a>
-          <button class="copy" type="button" data-copy="info@mfhtechnologies.co.za" aria-controls="email">Copy</button>
-        </div>
-        <div class="item">
-          <a href="tel:+27670157701">+27 67 015 7701</a>
-        </div>
+    <h2 id="contact-h"><span>Talk to us.</span></h2>
+    <p class="sub">For licensing, partnerships and new work.</p>
+    <div class="lines">
+      <div class="item">
+        <a id="email" href="mailto:info@mfhtechnologies.co.za">info@mfhtechnologies.co.za</a>
+        <button class="copy" type="button" data-copy="info@mfhtechnologies.co.za" aria-controls="email">Copy</button>
       </div>
-      <p class="where">Pretoria, South Africa</p>
+      <div class="item">
+        <a href="tel:+27670157701">+27 67 015 7701</a>
+      </div>
     </div>
+    <div class="meta"><p>Pretoria, South Africa</p><p id="clock" hidden></p></div>
   </section>
 </main>
 
 <footer class="site">
-  <div class="wrap">
-    <div>
-      <p>MFH Technologies (Pty) Ltd &middot; Reg. No. 2026/583234/07 &middot; 17 Chamonix HOA, 874 Odell Street, Wingate Park, Gauteng 0181 &middot; Director: Stephan Pieterse &middot; Information Officer 2026-069384</p>
-      <p><a href="privacy.html">Privacy</a> &middot; MFH TECHNOLOGIES&trade; is a trade mark of MFH Technologies (Pty) Ltd</p>
-    </div>
-  </div>
+  <p>MFH Technologies (Pty) Ltd &middot; Reg. No. 2026/583234/07 &middot; 17 Chamonix HOA, 874 Odell Street, Wingate Park, Gauteng 0181 &middot; Director: Stephan Pieterse &middot; Information Officer 2026-069384</p>
+  <p><a href="privacy.html">Privacy</a> &middot; MFH TECHNOLOGIES&trade; is a trade mark of MFH Technologies (Pty) Ltd</p>
 </footer>
 <script>
 (function () {
   var main = document.getElementById('main');
   void main.offsetWidth; main.classList.add('in');
-  // Each product name and the contact line rise once, when they come into view.
-  var els = [].slice.call(document.querySelectorAll('.row, .contact'));
-  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('seen'); }); return; }
+  // The time in Pretoria, so a caller knows whether it is office hours.
+  var clock = document.getElementById('clock');
+  try {
+    var fmt = new Intl.DateTimeFormat('en-ZA', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Africa/Johannesburg' });
+    var tick = function () { clock.textContent = 'It is ' + fmt.format(new Date()) + ' in Pretoria'; };
+    tick(); clock.hidden = false; setInterval(tick, 20000);
+  } catch (err) {}
+  if (!('IntersectionObserver' in window)) { [].forEach.call(document.querySelectorAll('.tile, .contact'), function (el) { el.classList.add('seen'); }); return; }
+  // Each product panel and the contact panel rise once, when they come into view.
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); } });
-  }, { rootMargin: '0px 0px -10% 0px' });
-  els.forEach(function (el) { io.observe(el); });
+  }, { rootMargin: '0px 0px -12% 0px' });
+  [].forEach.call(document.querySelectorAll('.tile, .contact'), function (el) { io.observe(el); });
+  // DalaDish's suppers only slide while their panel is on screen.
+  var dd = document.querySelector('.daladish');
+  new IntersectionObserver(function (es) { dd.classList.toggle('paused', !es[0].isIntersecting); }).observe(dd);
 })();
 document.addEventListener('click', function (e) {
   var b = e.target.closest('[data-copy]');
