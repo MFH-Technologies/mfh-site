@@ -103,6 +103,14 @@ header.site a.home { display: inline-flex; align-items: center; min-height: 44px
 nav.main { display: flex; align-items: center; gap: 8px 24px; }
 nav.main a { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.9375rem; font-weight: 500; color: var(--ink); text-decoration: none; }
 nav.main a.pill { padding: 0 20px; border-radius: 999px; background: var(--ink); color: var(--page); }
+nav.main a { white-space: nowrap; }
+/* On the narrowest phones the header keeps to one line: a smaller wordmark, and the Work link gives way (the work
+   follows right below the stage). */
+@media (max-width: 359px) {
+  .wordmark { width: 80px; }
+  nav.main a.pill { padding: 0 14px; }
+  nav.main a:not(.pill) { display: none; }
+}
 /* The label rolls up to a fresh copy of itself on hover */
 .roll { display: inline-block; overflow: hidden; vertical-align: top; line-height: 1.4; }
 .roll > span { display: block; position: relative; transition: transform 420ms var(--ease); }
